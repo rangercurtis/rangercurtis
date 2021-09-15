@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Binding Strip App</title>
+    <link href="../Content/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="jumbotron">
+        <div class="padded-box">
+            <div>
+                <h1>Calculate Number of Fabric Strips Needed for Binding a Quilt</h1>
+                <br />
+                <div class="align-content-center">
+                    <div>
+                        <label for="len">
+                            <p>
+                                <h2>
+                                    Quilt Length:
+                                </h2>
+                            </p>
+                            <input type="text" id="len">
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label for="wid">
+                        <br />
+                        <p>
+                            <h2>
+                                Quilt Width:
+                            </h2>
+                        </p>
+                        <input type="text" id="wid">
+                    </label>
+                </div>
+            </div>
+            <br />
+            <button class="alert-primary" id="calcBtn">Calculate</button>
+            <br />
+            <br />
+            <div class="gray-bg-container">
+                <h1 id="perimeter"></h1>
+            </div>
+            <br />
+            <button class="alert-info" onClick="window.location.reload();">Refresh Page</button>
+        </div>
+    </div>
+    <script>
+        //get inputs and button element from document
+        var lenEl = document.querySelector("#len");
+        var widEl = document.querySelector("#wid");
+        var calcBtn = document.querySelector("#calcBtn");
+        var perimeterEl = document.querySelector("#perimeter");
+
+        //bind a function to the onClick event to the calcBtn
+        calcBtn.onclick = function () {
+
+            //this is the perimeter formula 2*(length+width) divided by 42
+            //perimeter = 2 * (Number(lenEl.value) + Number(widEl.value)) / 42
+
+            perimeter = 2 * (Number(lenEl.value) + Number(widEl.value)) / 42
+
+            //write the results into html document, to include adding a ceiling method to raise a decimal to the next highest whole number
+            perimeterEl.innerHTML = "You will need this many fabric strips: " + Math.ceil(perimeter);
+        }
+    </script>
+</body>
+</html>

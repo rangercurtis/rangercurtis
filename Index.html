@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Curtis Portfolio</title>
+    <link href="../Content/style.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="large-header" class="large-header">
+        <canvas id="demo-canvas"></canvas>
+    </div>
+    <script src="../Scripts/TimeOfDayGreeting.js"></script>
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-primary">
+        <div class="container">
+            <!-- Name shown on mobile -->
+            <a class="navbar-brand">Stuart D. Curtis</a>
+            <!-- Mobile menu toggle -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Main navigation items -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mr-auto justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Home/About">About <span class="sr-only"></span></a>
+                    </li>
+
+                    <!--<li class="nav-item">
+                <a class="nav-link" href="~/Home/Resume">Resume<span class="sr-only"></span></a>
+            </li>-->
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Portfolio Projects</a>
+
+                        <div class="dropdown-menu navbar-dark bg-primary">
+                            <a class="dropdown-item">Project #1</a>
+                            <a class="dropdown-item">Project #2</a>
+                            <a class="dropdown-item">Project #3</a>
+                            <a class="dropdown-item">Project #4</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Home/Links">Links<span class="sr-only"></span></a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Home/Contact">Contact<span class="sr-only"></span></a>
+                    </li>
+
+                </ul>
+
+            </div>
+            <div id="like_button_container"></div>
+        </div>
+    </nav>
+    <div class="col-form-label">
+        <div class="container">
+            <div id="welcome"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div>
+                    <h2>This script sends a request to consume locational API data by calling on the getLocation method. I plan to use this script in the future with another javascript project to plot map coordinates on a graphic.</h2>
+                    <br />
+                    <button class="alert-info" onclick="getLocation()">Click here to determine your current position (lat/long)</button>
+                    <br />
+                    <div id="geolocation"></div>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div class="col-6">
+            <div class="card">
+                <h2>This is a perimeter calculation javascript program that I found and modified for my wife. She is a quilter, so she is often measuring fabric. This program accepts length and width inputs and determines the number of binding strips needed for a particular quilt. This program also uses a javascript ceiling method to account for recommended overage.</h2>
+
+                <a href="StripNumber.html"target="_blank"><h2>Quilt Binding Strips</h2></a>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="card-body">
+        <div id="like_button_container"></div>
+    </div>
+
+    <footer class="fixed-bottom">
+        <div id="bravery"></div>
+    </footer>
+
+    <!--Bootstrap javascript:-->
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <!--React.js www sources:-->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="../Scripts/Curtis_Portfolio.js"></script>
+    <!--JSX www source:-->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!--Bravery comment:-->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        ReactDOM.render(
+        <h2><strong>Welcome to my front-end developer portfolio/sandbox.</strong></h2>,
+        document.getElementById('welcome')
+        );
+        ReactDOM.render(
+        <h3><i>I choose bravery, because courage is more exhilirating than fear!</i></h3>,
+        document.getElementById('bravery')
+        );
+    </script>
+
+    <!--Geolocation API-->
+    <script>
+        const x = document.getElementById("geolocation");
+        function getLocation() {
+            try {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } catch {
+                x.innerHTML = err;
+            }
+        }
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
+</body>
+</html>
